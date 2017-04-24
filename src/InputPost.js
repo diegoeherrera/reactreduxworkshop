@@ -1,28 +1,23 @@
 import React from 'react'
-import {titleChange}from './actions'
+import {titleChange, summaryChange} from './actions'
 import { connect } from 'react-redux';
 
 
-const InputPost =({titleChange,title})=>{
-
-
+const InputPost =({summaryChange,titleChange,title,summary})=>{
 
       return (
         <div>
           <input type="text" value={title} onChange={e=>titleChange(e.target.value)}/>
+          <input type="text" value={summary} onChange={e=>summaryChange(e.target.value)}/>
         </div>
       )
 
-
-
 }
 
-function mapStateToProps(state) {
-  return state.editor;
-}
+
 
 
 
 
 export default connect(
-  mapStateToProps)(InputPost)
+  state=>state.editor,{titleChange,summaryChange})(InputPost)
