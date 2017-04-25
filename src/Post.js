@@ -4,13 +4,17 @@ import { connect } from 'react-redux';
 
 
 
-const Post=({title})=>{
-  console.log("title")
+const Post=({title,summary})=>{
+
   return(
+
     <div>
-      <h2>{title[0]}</h2>
+      <h2>{title}</h2>
+      <h3>{summary}</h3>
+
     </div>
+
   )
 }
 
-export default Post
+export default connect(state=>state,{})(Post)

@@ -9,15 +9,15 @@ const ListPosts=({posts})=>{
           <div>
 
 
-          console.log("aca esta "+posts)
-                //   {
-                // posts.map(p=>{
-                //
-                //   <Post {...p} />
-                //
-                //               }
-                //         )
-                //   }
+
+                  {
+                posts.map(p=>{
+
+                  return  <Post {...p} />
+
+                              }
+                        )
+                  }
 
           </div>
       )
