@@ -6,17 +6,21 @@ import { connect } from 'react-redux';
 const ListPosts=({posts})=>{
   return (
 
-        <div>
+          <div>
 
-           {
-              posts.map((p) => {
-                <Post {...p}/>
-                }
-              )
-           }
 
-           </div>
-    );
+          console.log("aca esta "+posts)
+                //   {
+                // posts.map(p=>{
+                //
+                //   <Post {...p} />
+                //
+                //               }
+                //         )
+                //   }
+
+          </div>
+      )
 }
 
 
