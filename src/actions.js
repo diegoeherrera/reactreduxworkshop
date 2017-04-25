@@ -17,3 +17,12 @@ export function summaryChange(summary){
     })
   }
 }
+
+export function addPost(post){
+  return dispatch=>{
+    dispatch({
+      type:"ADD_POST",
+      post:post
+    })
+  }
+}

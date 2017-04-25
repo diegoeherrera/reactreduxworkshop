@@ -1,4 +1,4 @@
-import { combineReducers } from 'redux'
+import { combineReducers } from 'redux';
 
 const initialStateEditor = {
   title: '',
@@ -20,6 +20,31 @@ switch (action.type) {
 }
 
 
+/*const posts = (posts=[],action)=>{
 
-const reducer = combineReducers({editor});
+  switch (action.type) {
+    case "ADD_POST":
+    return console.log(action.post)
+      break;
+    default:
+    return posts
+
+  }
+}*/
+
+const posts = (state = [], action) => {
+  switch(action.type) {
+    case "ADD_POST":
+      return [
+        Object.assign({}, action.post, {}), ...state
+      ];
+      break;
+    default:
+      return state;
+  }
+};
+
+
+
+const reducer = combineReducers({editor,posts});
 export default reducer;
