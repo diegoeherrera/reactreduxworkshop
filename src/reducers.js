@@ -1,9 +1,26 @@
 import { combineReducers } from 'redux';
 
+
 const initialStateEditor = {
+  id:'',
   title: '',
-  summary: ''
+  summary: '',
+  votes:'',
+  comments:[]
 };
+
+const getId=(state)=>{
+
+return state.reduce((acc,cur)=>{
+
+  
+  return cur.id>acc ? acc=cur.id : acc
+},0)+1
+
+}
+
+  //return post.id="le puse un id vieja!";
+
 
 const editor =(state= initialStateEditor,action)=>{
 switch (action.type) {
@@ -20,24 +37,13 @@ switch (action.type) {
 }
 
 
-/*const posts = (posts=[],action)=>{
-
-  switch (action.type) {
-    case "ADD_POST":
-    return console.log(action.post)
-      break;
-    default:
-    return posts
-
-  }
-}*/
 
 const posts = (state = [], action) => {
   switch(action.type) {
     case "ADD_POST":
       return [
-        Object.assign({}, action.post, {}), ...state
-      ];
+        Object.assign({}, action.post, {id:getId(state)}), ...state
+      ]
       break;
     default:
       return state;
