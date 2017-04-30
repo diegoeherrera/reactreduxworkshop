@@ -39,6 +39,8 @@ const handleComments =(state={comments:[""]},action)=>{
       case "COMMENT_CHANGE":
       return Object.assign({},state,{comments:[action.comment]})
       break;
+      case "ADD_COMMENT":
+      return state.comments.concat(action.comment,...state.comments)
 
       default:
       return state
