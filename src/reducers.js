@@ -6,26 +6,24 @@ const initialStateEditor = {
   title: '',
   summary: '',
   votes:'',
-  comments:[]
+  comments:[""]
 };
 
 const getId=(state)=>{
 
 return state.reduce((acc,cur)=>{
 
-  
   return cur.id>acc ? acc=cur.id : acc
+
 },0)+1
 
 }
-
-  //return post.id="le puse un id vieja!";
 
 
 const editor =(state= initialStateEditor,action)=>{
 switch (action.type) {
   case "TITLE_CHANGE":
-    return Object.assign({},state,{title:action.title})
+        return Object.assign({},state,{title:action.title})
     break;
   case "SUMMARY_CHANGE":
     return Object.assign({},state,{summary:action.summary})
@@ -33,7 +31,19 @@ switch (action.type) {
   default:
     return state
   }
+}
 
+
+const handleComments =(state={comments:[""]},action)=>{
+    switch (action.type) {
+      case "COMMENT_CHANGE":
+      return Object.assign({},state,{comments:[action.comment]})
+      break;
+
+      default:
+      return state
+
+    }
 }
 
 
@@ -42,8 +52,9 @@ const posts = (state = [], action) => {
   switch(action.type) {
     case "ADD_POST":
       return [
-        Object.assign({}, action.post, {id:getId(state)}), ...state
+        Object.assign({}, action.post, {id:getId(state),votes:"",comments:[]}), ...state
       ]
+
       break;
     default:
       return state;
@@ -52,5 +63,5 @@ const posts = (state = [], action) => {
 
 
 
-const reducer = combineReducers({editor,posts});
+const reducer = combineReducers({editor,posts,handleComments});
 export default reducer;

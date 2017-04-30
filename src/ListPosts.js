@@ -7,23 +7,16 @@ const ListPosts=({posts})=>{
   return (
 
           <div>
-
-
-
                   {
                 posts.map(p=>{
 
-                  return  <Post {...p} />
+                  return  <Post key={p.id} {...p} />
 
                               }
                         )
                   }
-
           </div>
       )
 }
-
-
-
 
 export default connect(state=>state,{})(ListPosts)

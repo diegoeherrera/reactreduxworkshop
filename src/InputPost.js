@@ -16,8 +16,7 @@ const InputPost =({summaryChange,titleChange,title,summary,addPost})=>{
           <div>
             <button onClick={e=>addPost({title,summary})}>Cargar Post!</button>
           </div>
-          <h2>Titulo:{title}</h2>
-          <h2>Texto:{summary}</h2>
+          
 
         </div>
       )

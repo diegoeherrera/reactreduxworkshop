@@ -26,3 +26,26 @@ export function addPost(post){
     })
   }
 }
+
+export function addComment(comment,id){
+  return dispatch=>{
+    dispatch({
+      type:"ADD_COMMENT",
+      comment:comment,
+      id:id
+    })
+  }
+}
+
+export function commentChange(comment,id){
+  console.log("comment: ",comment , "id: ", id)
+
+  return dispatch=>{
+    dispatch({
+      type:"COMMENT_CHANGE",
+      comment:comment,
+      id:id
+
+    })
+  }
+}
