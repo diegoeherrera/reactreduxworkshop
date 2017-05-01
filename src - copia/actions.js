@@ -27,12 +27,12 @@ export function addPost(post){
   }
 }
 
-export function addComment(comment,id){
-    console.log("from action comment: ",comment , "id: ", id)
+export function addComment(comments,id){
+    console.log("from action comment: ",comments , "id: ", id)
   return dispatch=>{
     dispatch({
       type:"ADD_COMMENT",
-      comment:comment,
+      comment:comments,
       id:id
     })
   }
@@ -40,7 +40,7 @@ export function addComment(comment,id){
 
 export function commentChange(comment,id){
 
-  console.log("from action comment change: ",comment , "id: ", id)
+
   return dispatch=>{
     dispatch({
       type:"COMMENT_CHANGE",
