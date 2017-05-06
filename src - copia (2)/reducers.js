@@ -5,13 +5,18 @@ import { combineReducers } from 'redux';
 
 
 
+const initialState =
+    {
+
+    posts:[]
+    
+  }
 
 
 
 
 
-
-const postEditor = (state ={}, action) => {
+const postEditor = (state =initialState, action) => {
   switch(action.type) {
     case "TITLE_CHANGE":
       return Object.assign({},state,{title:action.title})
@@ -32,25 +37,14 @@ const postEditor = (state ={}, action) => {
   }
 };
 
-const posts = (state=[],action)=>{
+const posts = (state=initialState,action)=>{
   switch (action.type) {
     case "ADD_POST":
-    return {comments:[...state.comments,{[action.id]:action.comment}]}
-
-
+    return Object.assign({},state,{posts:[{title:action.title,summary:action.summary,id:getId(state.posts)},...state.posts]})
       break;
-    default:
-    return state
-
-  }
-}
-
-
-const comments=(state={comments:[]},action)=>{
-  switch (action.type) {
     case "ADD_COMMENT":
-
-
+    console.log("comentario desde reducer: ",action.comment)
+      return Object.assign({},state,{})
 
       break;
     default:
@@ -58,6 +52,7 @@ const comments=(state={comments:[]},action)=>{
 
   }
 }
+
 
 const getId = (state) => {
 
@@ -71,5 +66,5 @@ return state.reduce((acc,cur)=> {
 
 
 
-const reducer = combineReducers({postEditor,posts,comments});
+const reducer = combineReducers({postEditor,initialState,posts});
 export default reducer;

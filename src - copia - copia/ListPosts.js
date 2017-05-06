@@ -3,13 +3,11 @@ import Post from './Post'
 import { connect } from 'react-redux';
 
 
-const ListPosts=({posts,title,summary})=>{
-  console.log("posts",posts)
+const ListPosts=({posts})=>{
   return (
 
           <div>
                   {
-
                 posts.map(p=>{
 
                   return  <Post key={p.id} {...p} />

@@ -4,12 +4,11 @@ import { connect } from 'react-redux';
 
 
 const ListPosts=({posts,title,summary})=>{
-  console.log("posts",posts)
+  console.log(posts)
   return (
 
           <div>
                   {
-
                 posts.map(p=>{
 
                   return  <Post key={p.id} {...p} />
@@ -21,4 +20,4 @@ const ListPosts=({posts,title,summary})=>{
       )
 }
 
-export default connect(state=>state,{})(ListPosts)
+export default connect(state=>state.posts,{})(ListPosts)

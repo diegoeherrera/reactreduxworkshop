@@ -4,7 +4,7 @@ import Comments from './Comments'
 
 
 
-const Post=({title,summary,id,posts})=>{
+const Post=({comments,title,summary,id})=>{
 
   return(
 
@@ -18,4 +18,4 @@ const Post=({title,summary,id,posts})=>{
   )
 }
 
-export default connect(state=>state.posts,{})(Post)
+export default connect(state=>state,{})(Post)
