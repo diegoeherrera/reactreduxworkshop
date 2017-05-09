@@ -20,8 +20,7 @@ const postEditor = (state ={}, action) => {
       return Object.assign({},state,{summary:action.summary})
     break;
     case "COMMENT_CHANGE":
-      return Object.assign({},state,{comment:action.comment,comment_id:action.id})
-
+    return Object.assign({},state,{id:action.id,comment:action.comment.toString()})
       break;
 
 
@@ -35,9 +34,7 @@ const postEditor = (state ={}, action) => {
 const posts = (state=[],action)=>{
   switch (action.type) {
     case "ADD_POST":
-    return {comments:[...state.comments,{[action.id]:action.comment}]}
-
-
+    return state.concat({id:getId(state),title:action.title,summary:action.summary})
       break;
     default:
     return state
@@ -46,17 +43,17 @@ const posts = (state=[],action)=>{
 }
 
 
-const comments=(state={comments:[]},action)=>{
+const comments=(state=[],action)=>{
   switch (action.type) {
     case "ADD_COMMENT":
-
-
-
-      break;
-    default:
-    return state
-
-  }
+    console.log("state from add comment",state)
+let newState = state.concat({[action.id]:action.comment});
+state.comment="";
+return newState;
+break;
+default:
+return state;
+}
 }
 
 const getId = (state) => {

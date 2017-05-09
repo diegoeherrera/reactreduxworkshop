@@ -18,4 +18,4 @@ const Post=({title,summary,id,posts})=>{
   )
 }
 
-export default connect(state=>state.posts,{})(Post)
+export default connect(state=>state,{})(Post)

@@ -5,18 +5,30 @@ import { connect } from 'react-redux';
 
 
 
+
 const Comments=({props,comments,comment,commentChange,addComment,id})=>{
 console.log(comments)
 
+document.addEventListener("click", function(){
+    document.getElementById("comments").value = "";
+});
 
+let inputComent=""
+const testear = function(comment,id){
+  addComment(comment,id)
+  inputComent.value=""
+}
   return(
       <div>
         <h5>Comentarios:</h5>
-        <textarea rows="4" cols="50"  onChange={(e)=>commentChange(e.target.value,id)}/>
+        <textarea rows="4" id="comments" ref={(input) => { inputComent = input; }} cols="50" onChange={(e)=>commentChange(e.target.value,id)}/>
 
-
+         <button  onClick={(e)=>testear(comment,id)}>Agregar Comentario</button>
         <div>
-          <button onClick={e=>addComment(comment,id)}>Agregar Comentario</button>
+
+          {
+            console.log("comments from comments: ",comments)
+          }
 
         </div>
       </div>
@@ -24,3 +36,6 @@ console.log(comments)
 }
 
 export default connect(state=>state.postEditor,{addComment,commentChange})(Comments)
+
+
+/*    <button onClick={e=>addComment(comment,id)}>Agregar Comentario</button>*/

@@ -39,6 +39,7 @@ export function addComment(comment,id){
       comment:comment,
       id:id
     })
+    return comment="";
   }
 }
 
